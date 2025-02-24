@@ -354,7 +354,7 @@ const BillingPreviewTable = ({ inVoiceData, orders }) => {
                 {" "}
                 <strong>Developed by HSquare Development</strong>
                 <br />
-                <strong>+92 327-2086685</strong>
+                <strong>+92 327 2086685</strong>
               </p>
             </div>
           </div>
@@ -423,44 +423,110 @@ const BillingPreviewTable = ({ inVoiceData, orders }) => {
             </div>
           </div> */}
 
+          {/* Itemized List */}
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-between",
+              // overflowX: "auto",
               marginTop: "1.5rem",
-              fontSize: "1.125rem",
-              fontWeight: "600",
-              borderTop: "2px solid",
+              // marginBottom: "1.5rem",
             }}
           >
-            <div style={{ width: "50%" }}>
-              <p style={{ fontSize: "12px", marginBottom: "8px" }}>Total:</p>
-              {/* <p style={{ fontSize: "12px", marginBottom: "8px" }}>
-                Customer Payment:
-              </p>
-              <p style={{ fontSize: "12px", marginBottom: "8px" }}>
-                Outstanding Amount:
-              </p>
-              <p style={{ fontSize: "12px", marginBottom: "8px" }}>
-                Excess Payment:
-              </p> */}
-            </div>
-            <div style={{ width: "50%", textAlign: "right" }}>
-              <p style={{ fontSize: "12px" }}>{totalBillAmount}</p>
-              {/* <p
-                style={{
-                  width: "100%",
-                  textAlign: "right",
-                  color: "#008000",
-                  fontSize: "12px",
-                  fontWeight: "700",
-                }}
-              >
-                {receivedAmount}
-              </p>
-              <p style={{ fontSize: "12px" }}>{remainingAmount}</p>
-              <p style={{ fontSize: "12px" }}>{returningAmount}</p> */}
-            </div>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                textAlign: "left",
+              }}
+            >
+              <thead className="">
+                <tr
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    padding: "3px 0",
+                    backgroundColor: "#f1f1f1",
+                  }}
+                >
+                  <th
+                    style={{
+                      width: "15%",
+                      textAlign: "left",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      padding: "6px 0",
+                    }}
+                  >
+                    Sn
+                  </th>
+                  <th
+                    style={{
+                      width: "40%",
+                      textAlign: "left",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      padding: "6px 0",
+                    }}
+                  >
+                    Item
+                  </th>
+                  <th
+                    style={{
+                      width: "15%",
+                      textAlign: "center",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      padding: "6px 0",
+                    }}
+                  >
+                    Qty
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {inVoiceData.map((row, index) => (
+                  <tr
+                    key={index + 1}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      padding: "3px 0",
+                      backgroundColor: index % 2 === 0 ? "#fff" : "#f9f9f9", // Alternating row colors
+                    }}
+                  >
+                    <td
+                      style={{
+                        width: "15%",
+                        textAlign: "left",
+                        fontSize: "12px",
+                        padding: "6px 0",
+                      }}
+                    >
+                      {index + 1}
+                    </td>
+                    <td
+                      style={{
+                        width: "40%",
+                        textAlign: "left",
+                        fontSize: "12px",
+                        padding: "6px 0",
+                      }}
+                    >
+                      {row.item} ({row.category.toLowerCase()})
+                    </td>
+                    <td
+                      style={{
+                        width: "15%",
+                        textAlign: "center",
+                        fontSize: "12px",
+                        padding: "6px 0",
+                      }}
+                    >
+                      {row.qty}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           {/* <hr style={{ margin: "1rem 0" }} /> */}
